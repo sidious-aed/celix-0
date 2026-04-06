@@ -1,0 +1,68 @@
+header
+------
+secs | base16
+tyrel@fearsome:~/celix$ ls -al dragon-aux-s.wav
+-rwxr-xr-x 1 tyrel droid-com 1234844 Apr  5 21:46 dragon-aux-s.wav
+naof-file-secs | 1234844
+fs-header | file-sized-header
+data-rate | naof-transfer-secs-per-second
+
+tyrel@fearsome:~/celix$ ./file-secs-sites dragon-aux-s.wav 0 3c
+fast-from-archives | [82, 73, 70, 70, 148, 215, 18, 0, 87, 65, 86, 69, 102, 109, 116, 32, 16, 0, 0, 0, 1, 0, 2, 0, 68, 172, 0, 0, 16, 177, 2, 0, 4, 0, 16, 0, 100, 97, 116, 97, 112, 215, 18, 0, 0, 0, 0, 0, 1, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0]
+naof-secs (base-16) | 3c
+naof-secs (base-16) | 60
+
+	secs 0-4
+		tyrel@fearsome:~/celix$ ./view-space "[82, 73, 70, 70]" a a
+		0 | RIFF
+
+	secs 4-8 - fs-header
+		tyrel@fearsome:~/celix$ base "[148, 215, 18, 0]" a a
+		base-a | 1234836
+		8 secs less than naof-file-secs
+
+	secs 8-c
+		tyrel@fearsome:~/celix$ ./view-space "[87, 65, 86, 69]" a a
+		0 | WAVE
+
+	secs c-10
+		tyrel@fearsome:~/celix$ ./view-space "[102, 109, 116, 32]" a a
+		0 | fmt
+
+	secs 10-14 - chunk-size
+		[16, 0, 0, 0]
+		base-a | 16
+
+	secs 14-16 - format-code
+		[1, 0]
+
+	secs 16-18 - naof-chanells
+		[2, 0]
+	
+	secs 18-c - sample-rate
+		[68, 172, 0, 0]
+	
+	secs c-20 - data-rate
+		[16, 177, 2, 0]
+
+	secs 20-22 - data-block-site
+		[4, 0]
+	
+	secs 22-24 - bits-per-sample
+		[16, 0]
+
+	secs 24-26 - size-of-the-extension
+		[100, 97]
+
+	secs 26-28 - naof-valid-bits
+		[116, 97]
+
+	secs 28-2c - fs-header|speaker-mask
+		[112, 215, 18, 0]
+		tyrel@fearsome:~/celix$ base "[112, 215, 18, 0]" a a
+		base-a | 1234800
+		base-10 | 12d770
+		base-a | 44 secs less than file-size
+
+	secs 2c-3c - mild-insignia
+		[0, 0, 0, 0, 1, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0]

@@ -38,9 +38,9 @@ let naof_params = ARGV.length;
 let acfn = "";
 let sns;
 if(naof_params != 1) {
+	print("params | " + ARGV);
 	print("<--> just need a sound-file-name is all.");
 } else {
-	print("params | " + ARGV);
 	let fn = ARGV[0];
 	if(fn[0] != "/") {
 		let base0 = GLib.get_current_dir() + "/";
@@ -74,29 +74,29 @@ if(naof_params != 1) {
 		let [ps, ns] = play_sound(acfn);
 		sns = ns + 0.127;
 		print("ps | " + ps);
-		let initt = Date.now();
-		let post_init_glance = function() {
-			let elapsed = Date.now() - initt;
-			//print("elapsed | " + elapsed);
-			//print("sns | " + sns);
-			if(sns != -1 && ((elapsed / 1000) >= sns)) {
-				let acfn_site = acfn.length;
-				if(acfn_site > 0) {
-					let file = Gio.File.new_for_path(acfn);
-					file.delete_async(GLib.PRIORITY_DEFAULT, null, function(source, result) {
-						source.delete_finish(result);
-					});
-				}
-				print("<--> in post-init-glance. clearing out pass cache and exiting.");
-				Gtk.main_quit();
-				/*
-				*/
-			}
-			GLib.timeout_add(GLib.PRIORITY_DEFAULT, 127, post_init_glance);
-		}
-		post_init_glance();
-		Gtk.main();
 	} else {
 		print("<--> could not find " + fn + ".");
 	}
 }
+let initt = Date.now();
+let post_init_glance = function() {
+	let elapsed = Date.now() - initt;
+	//print("elapsed | " + elapsed);
+	//print("sns | " + sns);
+	if(sns != -1 && ((elapsed / 1000) >= sns)) {
+		let acfn_site = acfn.length;
+		if(acfn_site > 0) {
+			let file = Gio.File.new_for_path(acfn);
+			file.delete_async(GLib.PRIORITY_DEFAULT, null, function(source, result) {
+				source.delete_finish(result);
+			});
+		}
+		print("<--> in post-init-glance. clearing out pass cache and exiting.");
+		Gtk.main_quit()
+		/*
+		*/
+	}
+	GLib.timeout_add(GLib.PRIORITY_DEFAULT, 127, post_init_glance);
+}
+post_init_glance();
+Gtk.main();

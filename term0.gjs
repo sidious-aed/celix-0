@@ -442,6 +442,79 @@ let es_play = function(fn, file, basen) {
 	});
 	return;
 }
+let [success0, pid0, stdin0, stdout0, stderr0] = GLib.spawn_async_with_pipes(
+	null, ["/home/tyrel/celix/lstr", "covr/lstr.com", "prints/sstr.com"], null, GLib.SpawnFlags.SEARCH_PATH, null
+);
+print("lstr-success | " + success0);
+let [success1, pid1, stdin1, stdout1, stderr1] = GLib.spawn_async_with_pipes(
+	null, ["/home/tyrel/celix/dstr", "covr/dstr.com", "prints/dstr.com"], null, GLib.SpawnFlags.SEARCH_PATH, null
+);
+print("dstr-success | " + success1);
+let es_seek = function(fn, file, basen, is_strstr) {
+	let command_entree = read_file(fn);
+	let command_entree_site = command_entree.length;
+	let et = command_entree_site - 1;
+	let command = "";
+	let comp = "";
+	let params = [];
+	if(is_strstr) {
+		params.push("/home/tyrel/celix/lstr");
+	} else {
+		params.push("/home/tyrel/celix/dstr");
+	}
+	let mode = 1;
+	let qsite = 0;
+	let esite = 0;
+	while(true) {
+		let is_com = false;
+		if(esite == et) {
+			is_com = true;
+		}
+		let con = command_entree[esite];
+		//print("con | " + con);
+		//if(con == "\"") {
+		//}
+		if(mode == 0) {
+			if(con == " ") {
+				command = comp;
+				comp = "";
+				mode = 1;
+			} else {
+				comp += con;
+			}
+		} else if(mode == 1) {
+			if(con == " " || is_com) {
+				params.push(comp);
+				comp = "";
+			} else {
+				comp += con;
+			}
+		}
+		if(con == "\"") {
+			qsite += 1;
+		}
+		esite += 1;
+		if(esite == command_entree_site) {
+			break;
+		}
+	}
+	let naof_params = params.length;
+	let et_param = params[naof_params - 1];
+	command = params;
+	print("command | " + command);
+	let con0 = "l";
+	if(is_strstr == false) {
+		con0 = "d";
+	}
+	let comfn = "covr/" + con0 + "str.com";
+	print("comfn | " + comfn);
+	let req_params = (params[1] + " " + params[2]);
+	print("req-params | " + req_params);
+	write_to_file(comfn, req_params);
+	file.delete_async(GLib.PRIORITY_DEFAULT, null, function(source, result) {
+		source.delete_finish(result);
+	});
+}
 
 let directory = Gio.File.new_for_path("prints");
 const fileMonitor = directory.monitor(Gio.FileMonitorFlags.WATCH_MOVES, null);
@@ -472,6 +545,7 @@ fileMonitor.connect('changed', (_fileMonitor, file, otherFile, eventType) => {
 	//print("event-type | " + eventType);
 	//print("created-type | " + Gio.FileMonitorEvent.CREATED);
 	if(eventType == 3) {
+		//print("name | " + name);
 		//print("extension | " + extension);
 		if(extension == "print") {
 			//print("is in print.");
@@ -488,6 +562,14 @@ fileMonitor.connect('changed', (_fileMonitor, file, otherFile, eventType) => {
 		if(extension == "play") {
 			print("is in play.");
 			es_play(fn, file, basen);
+		}
+		if(extension.slice(1, extension_site) == "seek") {
+			print("is in seek.");
+			let is_strstr = true;
+			if(extension[0] == "d") {
+				is_strstr = false;
+			}
+			es_seek(fn, file, basen, is_strstr);
 		}
 		//file.delete(null);
 		//let [success, pid, stdin, stdout, stderr] = GLib.spawn_async_with_pipes(
