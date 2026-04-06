@@ -1,0 +1,4 @@
+aon-way-to-full-core-speak
+--------------------------
+1117: 00000000003e82a0   168 OBJECT  GLOBAL DEFAULT   29 _IO_file_jumps@@GLIBC_2.2.5
+2e800:	48 8d 3d f9 9c 3b 00 	lea    0x3b9cf9(%rip),%rdi        # 3e8500 <_IO_file_jumps@@GLIBC_2.2.5+0x260>

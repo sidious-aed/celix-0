@@ -1,0 +1,582 @@
+##########################################################################################################
+# hae | hash-add-element
+##########################################################################################################
+# rbx | hash-name
+# rsi | key
+# rcx | key-site
+# rdi | value
+# rdx | value-site
+# r8  | is-anew
+% equations
+% views
+% vects
+##########################################################################################################
+# init
+##########################################################################################################
+sub 10000 rsp
+aqs hash-name
+mq rbx hash-name
+aqs key
+mq rsi key
+aqs key-site
+mq rcx key-site
+aqs value
+mq rdi value
+aqs value-site
+mq rdx value-site
+aqs is-anew
+mq r8 is-anew
+aqs equations
+mq r12 equations
+aqs views
+mq r13 views
+aqs vects
+mq r14 vects
+aqs expansion-facter
+mov 2 r8
+mq r8 expansion-facter
+ent jsect \n
+
+##########################################################################################################
+# generate-names
+##########################################################################################################
+aqs name-site
+mq hash-name rdi
+mq equations r15
+addc equations get-naof-secs r15
+dct r15
+mq rax name-site
+
+mq hash-name rsi
+mov 13 rcx
+mq equations r12
+mq views r11
+addc views wtlr r11
+dct r11
+lent jsect rsi
+mov 1 rcx
+mq equations r12
+mq views r11
+addc views wtlr r11
+dct r11
+
+ent rname-site hash-name-site
+lent rname-site rsi
+mq name-site rdi
+mov 10 rbx
+mq equations rdx
+mq views r11
+addc views wtlrfvn r11
+dct r11
+
+aqs hash-meta-name
+isr 400
+aqs hash-meta-name-site
+mq hash-name rsi
+lq hash-meta-name rdi
+mq name-site rcx
+mq rcx hash-meta-name-site
+mq equations r11
+addc equations com r11
+dct r11
+
+ent hash-meta-name-com .meta
+lent hash-meta-name-com rsi
+lq hash-meta-name rdi
+mq hash-meta-name-site r8
+add r8 rdi
+mov 5 rcx
+add rcx r8
+mq r8 hash-meta-name-site
+mq equations r11
+addc equations com r11
+dct r11
+lq hash-meta-name rsi
+mq hash-meta-name-site r8
+add r8 rsi
+nao r9
+movs r9 0 rsi
+
+lq hash-meta-name rsi
+mq hash-meta-name-site rcx
+mq equations r12
+mq views r11
+addc views wtlr r11
+dct r11
+lent jsect rsi
+mov 1 rcx
+mq equations r12
+mq views r11
+addc views wtlr r11
+dct r11
+
+aqs hash-data-name
+isr 400
+aqs hash-data-name-site
+mq hash-name rsi
+lq hash-data-name rdi
+mq name-site rcx
+mq rcx hash-data-name-site
+mq equations r11
+addc equations com r11
+dct r11
+
+ent hash-data-name-com .data
+lent hash-data-name-com rsi
+lq hash-data-name rdi
+mq hash-data-name-site r8
+add r8 rdi
+mov 5 rcx
+add rcx r8
+mq r8 hash-data-name-site
+mq equations r11
+addc equations com r11
+dct r11
+lq hash-data-name rsi
+mq hash-data-name-site r8
+add r8 rsi
+nao r9
+movs r9 0 rsi
+
+lq hash-data-name rsi
+mq hash-data-name-site rcx
+mq equations r12
+mq views r11
+addc views wtlr r11
+dct r11
+lent jsect rsi
+mov 1 rcx
+mq equations r12
+mq views r11
+addc views wtlr r11
+dct r11
+
+##########################################################################################################
+# get-hash-meta
+##########################################################################################################
+aqs hash-meta-site
+aqs hash-meta-naof-esecs
+
+aqs file
+# open-read
+nao rsi
+lq hash-meta-name rdi
+mov 2 rax
+sys
+mq rax file
+# read
+mq file rdi
+mov 10 rdx
+lq hash-meta-site rsi
+mov 0 rax
+sys
+# close
+mq file rdi
+mov 3 rax
+sys
+
+ent rhash-meta-site hash-meta-site
+lent rhash-meta-site rsi
+mq hash-meta-site rdi
+mov 10 rbx
+mq equations rdx
+mq views r11
+addc views wtlrfvn r11
+dct r11
+
+ent rhash-meta-naof-esecs hash-meta-naof-esecs
+lent rhash-meta-naof-esecs rsi
+mq hash-meta-naof-esecs rdi
+mov 10 rbx
+mq equations rdx
+mq views r11
+addc views wtlrfvn r11
+dct r11
+
+##########################################################################################################
+# get-hash-data
+##########################################################################################################
+aqs hash-data-site
+aqs hash-data-naof-esecs
+
+# open-read
+nao rsi
+lq hash-data-name rdi
+mov 2 rax
+sys
+mq rax file
+# read
+mq file rdi
+mov 10 rdx
+lq hash-data-site rsi
+mov 0 rax
+sys
+# close
+mq file rdi
+mov 3 rax
+sys
+
+ent rhash-data-site hash-data-site
+lent rhash-data-site rsi
+mq hash-data-site rdi
+mov 10 rbx
+mq equations rdx
+mq views r11
+addc views wtlrfvn r11
+dct r11
+
+ent rhash-data-naof-esecs hash-data-naof-esecs
+lent rhash-data-naof-esecs rsi
+mq hash-data-naof-esecs rdi
+mov 10 rbx
+mq equations rdx
+mq views r11
+addc views wtlrfvn r11
+dct r11
+
+##########################################################################################################
+# write-key-value
+##########################################################################################################
+aqs data-key
+aqs data-key-site
+aqs data-value
+aqs data-value-site
+aqs at-site
+
+mq hash-meta-site r8
+cmp 0 r8
+st jne is-first-hash-element-com
+	mq r8 at-site
+	mq r8 data-key
+	mq r8 data-key-site
+	mq r8 data-value
+	mq r8 data-value-site
+	st jmp is-not-first-hash-element-com
+s is-first-hash-element-com
+	lq hash-data-name rsi
+	lq data-key rdi
+	mq hash-data-site rbx
+	sub 1 rbx
+	mq equations r12
+	mq views r13
+	mq vects r11
+	addc vects gvr r11
+	dct r11
+
+	mq data-value r8
+	mq data-value-site r9
+	add r9 r8
+	mq r8 at-site
+s is-not-first-hash-element-com
+
+ent rdata-value data-value
+lent rdata-value rsi
+mq data-value rdi
+mov 10 rbx
+mq equations rdx
+mq views r11
+addc views wtlrfvn r11
+dct r11
+
+ent rdata-value-site data-value-site
+lent rdata-value-site rsi
+mq data-value-site rdi
+mov 10 rbx
+mq equations rdx
+mq views r11
+addc views wtlrfvn r11
+dct r11
+
+# open-write
+mov 1f8 rdx
+mov 41 rsi
+mq hash-name rdi
+mov 2 rax
+sys
+mq rax file
+# lseek
+mq file rdi
+mq at-site rsi
+nao rdx
+mov 8 rax
+sys
+# write
+mq file rdi
+mq key rsi
+mq key-site rdx
+mov 1 rax
+sys
+# write
+mq file rdi
+mq value rsi
+mq value-site rdx
+mov 1 rax
+sys
+# close
+mq file rdi
+mov 3 rax
+sys
+
+##########################################################################################################
+# write-meta
+##########################################################################################################
+aqs rnaof-meta-esecs
+mov 10 r8
+mq r8 rnaof-meta-esecs
+aqs meta-rsite
+aqs meta-at
+aqs rmeta-data-site
+aqs rmeta-naof-datas
+
+mq is-anew r8
+cmp 1 r8
+st jne is-anew-com
+	mq hash-data-site r8
+	mq r8 rmeta-data-site
+	mov 1 r8
+	mq r8 rmeta-naof-datas
+
+	lq hash-meta-name rdi
+	lq rmeta-data-site rsi
+	mq equations r12
+	mq views r13
+	mq vects r11
+	addc vects av r11
+	dct r11
+	st jmp is-not-anew-com
+s is-anew-com
+	mq hash-meta-site rbx
+	sub 1 rbx
+	mq rbx meta-rsite
+	factq rnaof-meta-esecs rbx
+	add 10 rbx
+	mq rbx meta-at
+
+	ent rmeta-rsite meta-rsite
+	lent rmeta-rsite rsi
+	mq meta-rsite rdi
+	mov 10 rbx
+	mq equations rdx
+	mq views r11
+	addc views wtlrfvn r11
+	dct r11
+
+	ent rmeta-at meta-at
+	lent rmeta-at rsi
+	mq meta-at rdi
+	mov 10 rbx
+	mq equations rdx
+	mq views r11
+	addc views wtlrfvn r11
+	dct r11
+
+	# open-read
+	nao rsi
+	lq hash-meta-name rdi
+	mov 2 rax
+	sys
+	mq rax file
+	# lseek
+	mq file rdi
+	mq meta-at rsi
+	nao rdx
+	mov 8 rax
+	sys
+	# read
+	mq file rdi
+	mov 10 rdx
+	lq rmeta-data-site rsi
+	mov 0 rax
+	sys
+	# close
+	mq file rdi
+	mov 3 rax
+	sys
+	mq rmeta-naof-datas r8
+	add 1 r8
+	mq r8 rmeta-naof-datas
+
+	ent rrmeta-data-site rmeta-data-site
+	lent rrmeta-data-site rsi
+	mq rmeta-data-site rdi
+	mov 10 rbx
+	mq equations rdx
+	mq views r11
+	addc views wtlrfvn r11
+	dct r11
+
+	ent rrmeta-naof-datas rmeta-naof-datas
+	lent rrmeta-naof-datas rsi
+	mq rmeta-naof-datas rdi
+	mov 10 rbx
+	mq equations rdx
+	mq views r11
+	addc views wtlrfvn r11
+	dct r11
+
+	# open-write
+	mov 1f8 rdx
+	mov 41 rsi
+	lq hash-meta-name rdi
+	mov 2 rax
+	sys
+	mq rax file
+	# lseek
+	mq file rdi
+	mq meta-at rsi
+	add 8 rsi
+	nao rdx
+	mov 8 rax
+	sys
+	# write
+	mq file rdi
+	mov 8 rdx
+	lq rmeta-naof-datas rsi
+	mov 1 rax
+	sys
+	# close
+	mq file rdi
+	mov 3 rax
+	sys
+s is-not-anew-com
+
+##########################################################################################################
+# write-data
+##########################################################################################################
+aqs rdata-key
+aqs rdata-key-site
+aqs rdata-value
+aqs rdata-value-site
+mq at-site r8
+mq r8 rdata-key
+mq key-site r9
+mq r9 rdata-key-site
+add r9 r8
+mq r8 rdata-value
+mq value-site r9
+mq r9 rdata-value-site
+
+lq hash-data-name rdi
+lq rdata-key rsi
+mq equations r12
+mq views r13
+mq vects r11
+addc vects av r11
+dct r11
+
+add 10000 rsp
+ret
+
+##########################################################################################################
+# com
+##########################################################################################################
+add 10000 rsp
+ret
+
+#init
+ent fn droid/clerk-com.secs
+aqs file
+# open-write
+mov 1f8 rdx
+mov 441 rsi
+lent fn rdi
+mov 2 rax
+sys
+mq rax file
+# write
+mq file rdi
+mov 8 rdx
+lq naof-quads rsi
+mov 1 rax
+sys
+# write
+mq file rdi
+mov 8 rdx
+lq naof-secs rsi
+mov 1 rax
+sys
+# close
+mq file rdi
+mov 3 rax
+sys
+#com
+
+#init
+mq entree rsi
+mq destination rdi
+mov rdi r8
+mq naof-quad-secs r9
+add r9 r8
+s com-quads-init
+	mov 0 rsi r10
+	mov r10 0 rdi
+	add 8 rsi
+	add 8 rdi
+	cmp rdi r8
+	st je com-quads-com
+	st jmp com-quads-init
+s com-quads-com
+#com
+#init
+aqs scv-code
+mq r10 scv-code
+aqs views
+mq r12 views
+aqs scv
+mq r13 scv
+aqs equations
+mq r14 equations
+ent rscv scv
+ent rnaof-quads naof-quads
+ent rnaof-secs naof-secs
+mq scv-code r10
+mov aed123123 r11
+cmp r10 r11
+st jne see-scope-com
+	lent rscv rsi
+	mq scv rdi
+	mov 18 rcx
+	mov 10 rbx
+	nao r10
+	mq equations rdx
+	mq views r11
+	addc views view-space r11
+	dct r11
+
+	ent rdestination destination
+	lent rdestination rsi
+	mq destination rdi
+	mov 10 rbx
+	mq equations rdx
+	mq views r11
+	addc views view-number r11
+	dct r11
+
+	ent rdestination-com destination-com
+	lent rdestination-com rsi
+	mq destination rdi
+	mq naof-quad-secs r8
+	add r8 rdi
+	mov 10 rbx
+	mq equations rdx
+	mq views r11
+	addc views view-number r11
+	dct r11
+
+	lent rnaof-quads rsi
+	mq naof-quads rdi
+	mov 10 rbx
+	mq equations rdx
+	mq views r11
+	addc views view-number r11
+	dct r11
+
+	lent rnaof-secs rsi
+	mq naof-secs rdi
+	mov 10 rbx
+	mq equations rdx
+	mq views r11
+	addc views view-number r11
+	dct r11
+s see-scope-com
+#com

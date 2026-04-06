@@ -1,0 +1,16 @@
+gcc params order
+----------------
+rdi
+rsi
+rdx
+rcx
+r8
+
+syscall params order
+--------------------
+rdi
+rsi
+rdx
+r10
+r8
+r9

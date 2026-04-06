@@ -1,0 +1,5 @@
+unsigned long main(unsigned long naof_params, char ** params) {
+	asm("nop");
+	asm("nop");
+	return 0;
+}

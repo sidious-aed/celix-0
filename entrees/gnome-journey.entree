@@ -1,0 +1,17 @@
+gjs | seems to have the simplest syscalls for submission of js to the eco-asig
+/usr/lib/gnome-shell/libgnome-shell.so | maybe has gnomes ui imports
+
+alt-f2 | open gnome-comand
+	r | restart gnome
+	lg | launch looking-glass
+
+looking-glass
+-------------
+global.get_window_actors()[1].hide()
+global.get_window_actors()[0].reparent(global.get_window_actors()[1])
+log("talkei talkei. airgo vah nah goo trim brader.")
+Shell.AppSystem.get_default().lookup_app('gimp.desktop').activate()
+
+icons
+-----
+node0 | /usr/share/applications

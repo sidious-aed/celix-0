@@ -1,0 +1,9 @@
+body {
+	background-color: rgb(0, 0, 0);
+	color: rgb(27, 227, 27);
+}
+
+#shell-0 {
+	display: inline-block;
+	overflow-y: auto;
+}

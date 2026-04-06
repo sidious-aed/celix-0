@@ -1,0 +1,5 @@
+aon groups
+----------
+manafest | /etc/group
+add group to user | sudo usermod -aG sudo droid
+remove group from user | sudo gpasswd -d droid droid-com

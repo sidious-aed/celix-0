@@ -1,0 +1,190 @@
+#!/usr/bin/env gjs
+imports.gi.versions.Gtk = "3.0";
+const {Gtk, WebKit2} = imports.gi;
+const Gio = imports.gi.Gio;
+const GLib = imports.gi.GLib;
+const Gdk = imports.gi.Gdk;
+imports.searchPath.push(".");
+const clerk = imports.clerk;
+Gtk.init(null);
+let provider = new Gtk.CssProvider();
+provider.load_from_data(".generalp {background-color: #000000;}");
+Gtk.StyleContext.add_provider_for_screen(
+	Gdk.Screen.get_default(),
+	provider,
+	Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+);
+
+let file = Gio.File.new_for_path("view-0.html");
+let [ok, contents] = file.load_contents(null);
+let hip_file = "" + contents;
+
+let window = new Gtk.Window({title: "I Sim."});
+window.get_style_context().add_class("generalp");
+window.set_default_size(800, 600);
+window.connect("destroy", Gtk.main_quit);
+
+let webView = new WebKit2.WebView();
+window.add(webView);
+// Load HTML content
+webView.load_html("" + hip_file, null);
+
+let jpids_0 = [];
+let for_an_after_pause_times = function() {
+	/*
+	let naof_jpids_0 = jpids_0.length;
+	let jsite = 0;
+	while(true) {
+		if(jsite == naof_jpids_0) {
+			break;
+		}
+		let jpid = jpids_0[jsite];
+		//GLib.source_remove(jpid);
+		jsite += 1;
+	}
+	jpids_0 = [];
+	// execve first confirmed by hide-show-opacity with lg(looking-glass) global.get_window_actors()[0]
+	let [success, pid] = GLib.spawn_async(
+		null, // working_directory (null to inherit)
+		["/home/tyrel/celix/vshell/view-0/gt"],
+		null, // envp (environment variables, null to inherit)
+		GLib.SpawnFlags.SEARCH_PATH | GLib.SpawnFlags.DO_NOT_REAP_CHILD, // flags
+		null  // child_setup function (null for none)
+	);
+	*/
+
+	let [success, pid, stdin, stdout, stderr] = GLib.spawn_async_with_pipes(
+		null, ["/home/tyrel/celix/vshell/view-0/gt"], null, GLib.SpawnFlags.SEARCH_PATH, null
+	);
+	//GLib.close(stdin); 
+	//GLib.close(stdout);
+	//GLib.close(stderr);
+	GLib.child_watch_add(GLib.PRIORITY_DEFAULT, pid, (pid, status) => {
+		GLib.spawn_close_pid(pid);
+	});
+
+	//log("from the kernels slea at the backer of sais, through the chains of aghei-gair-go-mahr.");
+	file = Gio.File.new_for_path("gt.html");
+	[ok, contents] = file.load_contents(null);
+	webView.load_html("" + contents, null);
+	let jpid = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 127, for_an_after_pause_times);
+	jpids_0.push(jpid);
+
+	/*
+	file = Gio.File.new_for_path("view-0.js");
+	[ok, contents] = file.load_contents(null);
+	//log("js-contents | " + contents);
+	webView.run_javascript(("" + contents), null, (webview, result) => {
+		try {
+			log("dom updated.");
+		} catch (e) {
+			log("problem with dom update | " + e);
+		}
+	});
+	*/
+}
+
+/*
+GLib.timeout_add(GLib.PRIORITY_DEFAULT, 5027, () => {
+	log("trying for dom update.");
+	file = Gio.File.new_for_path("view-0-slide-1.html");
+	[ok, contents] = file.load_contents(null);
+	webView.load_html("" + contents, null);
+	GLib.timeout_add(GLib.PRIORITY_DEFAULT, 127, for_an_after_pause_times);
+});
+*/
+
+let html = "";
+let sig = [];
+let bsig = []
+let jpids_1 = [];
+let psite = 0;
+let pulse = function() {
+	let naof_jpids_1 = jpids_1.length;
+	let jsite = 0;
+	while(true) {
+		if(jsite == naof_jpids_1) {
+			break;
+		}
+		let jpid = jpids_1[jsite];
+		//GLib.source_remove(jpid);
+		jsite += 1;
+	}
+	jpids_1 = [];
+	webView.run_javascript('document.documentElement.outerHTML;', null, (view, result) => {
+		let update_intreaguing_cache = function() {
+			//log("i sim. from catecombage find.");
+			let jsResult = view.run_javascript_finish(result);
+			let jsValue = jsResult.get_js_value();
+			html = jsValue.to_string();
+		}
+		update_intreaguing_cache();
+	});
+	sig = clerk.simple_sig(html);
+	//log("psite | " + psite);
+	//log("sig | " + sig);
+	let launch = clerk.vecter_compair(sig, bsig);
+	//log("launch | " + launch);
+	bsig = sig;
+	if((psite == 0) || launch) {
+		/*
+		*/
+		let jpid = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 127, for_an_after_pause_times);
+		jpids_0.push(jpid);
+	}
+	//log("i sim.");
+	//log("html | " + html);
+	let jpid = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 527, pulse);
+	jpids_1.push(jpid);
+	psite += 1;
+	return GLib.SOURCE_REMOVE;
+}
+let jpid = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 3027, pulse);
+jpids_1.push(jpid);
+
+
+file = Gio.File.new_for_path("view-0.css");
+[ok, contents] = file.load_contents(null);
+let userStyleSheet = new WebKit2.UserStyleSheet(
+    "" + contents,
+    WebKit2.UserContentInjectedFrames.ALL_FRAMES,
+    WebKit2.UserStyleLevel.USER,
+    null,
+    null
+);
+let manager = webView.get_user_content_manager();
+manager.add_style_sheet(userStyleSheet);
+
+// key response
+window.connect("key-press-event", (widget, event) => {
+    // Get key value
+    let [, keyval] = event.get_keyval();
+
+    // Check for specific key (e.g., Escape)
+    if (keyval == Gdk.KEY_Escape) {
+        log("weary ... and [(mint)|(meant)] warm maybe even.");
+        window.close();
+        return true; // Event handled
+    }
+
+    log(`Key pressed: ${keyval}`);
+    return false; // Propagate event
+});
+
+// load for clerical reasons.
+file = Gio.File.new_for_path("view-0.js");
+[ok, contents] = file.load_contents(null);
+//log("" + contents);
+
+/*
+let [success, pid] = GLib.spawn_async(
+	null, // working_directory (null to inherit)
+	["/bin/echo", "i", "sim."],
+	null, // envp (environment variables, null to inherit)
+	GLib.SpawnFlags.SEARCH_PATH | GLib.SpawnFlags.DO_NOT_REAP_CHILD, // flags
+	null  // child_setup function (null for none)
+);
+*/
+
+window.show_all();
+Gtk.main();

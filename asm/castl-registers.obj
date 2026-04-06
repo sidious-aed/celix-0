@@ -1,0 +1,461 @@
+
+asm/castl-registers:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+00000000000004b8 <_init>:
+ 4b8:	48 83 ec 08          	sub    $0x8,%rsp
+ 4bc:	48 8b 05 25 1b 20 00 	mov    0x201b25(%rip),%rax        # 201fe8 <__gmon_start__>
+ 4c3:	48 85 c0             	test   %rax,%rax
+ 4c6:	74 02                	je     4ca <_init+0x12>
+ 4c8:	ff d0                	callq  *%rax
+ 4ca:	48 83 c4 08          	add    $0x8,%rsp
+ 4ce:	c3                   	retq   
+
+Disassembly of section .plt:
+
+00000000000004d0 <.plt>:
+ 4d0:	ff 35 f2 1a 20 00    	pushq  0x201af2(%rip)        # 201fc8 <_GLOBAL_OFFSET_TABLE_+0x8>
+ 4d6:	ff 25 f4 1a 20 00    	jmpq   *0x201af4(%rip)        # 201fd0 <_GLOBAL_OFFSET_TABLE_+0x10>
+ 4dc:	0f 1f 40 00          	nopl   0x0(%rax)
+
+Disassembly of section .plt.got:
+
+00000000000004e0 <__cxa_finalize@plt>:
+ 4e0:	ff 25 12 1b 20 00    	jmpq   *0x201b12(%rip)        # 201ff8 <__cxa_finalize@GLIBC_2.2.5>
+ 4e6:	66 90                	xchg   %ax,%ax
+
+Disassembly of section .text:
+
+00000000000004f0 <_start>:
+ 4f0:	31 ed                	xor    %ebp,%ebp
+ 4f2:	49 89 d1             	mov    %rdx,%r9
+ 4f5:	5e                   	pop    %rsi
+ 4f6:	48 89 e2             	mov    %rsp,%rdx
+ 4f9:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+ 4fd:	50                   	push   %rax
+ 4fe:	54                   	push   %rsp
+ 4ff:	4c 8d 05 9a 08 00 00 	lea    0x89a(%rip),%r8        # da0 <__libc_csu_fini>
+ 506:	48 8d 0d 23 08 00 00 	lea    0x823(%rip),%rcx        # d30 <__libc_csu_init>
+ 50d:	48 8d 3d e6 00 00 00 	lea    0xe6(%rip),%rdi        # 5fa <main>
+ 514:	ff 15 c6 1a 20 00    	callq  *0x201ac6(%rip)        # 201fe0 <__libc_start_main@GLIBC_2.2.5>
+ 51a:	f4                   	hlt    
+ 51b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+0000000000000520 <deregister_tm_clones>:
+ 520:	48 8d 3d e9 1a 20 00 	lea    0x201ae9(%rip),%rdi        # 202010 <__TMC_END__>
+ 527:	55                   	push   %rbp
+ 528:	48 8d 05 e1 1a 20 00 	lea    0x201ae1(%rip),%rax        # 202010 <__TMC_END__>
+ 52f:	48 39 f8             	cmp    %rdi,%rax
+ 532:	48 89 e5             	mov    %rsp,%rbp
+ 535:	74 19                	je     550 <deregister_tm_clones+0x30>
+ 537:	48 8b 05 9a 1a 20 00 	mov    0x201a9a(%rip),%rax        # 201fd8 <_ITM_deregisterTMCloneTable>
+ 53e:	48 85 c0             	test   %rax,%rax
+ 541:	74 0d                	je     550 <deregister_tm_clones+0x30>
+ 543:	5d                   	pop    %rbp
+ 544:	ff e0                	jmpq   *%rax
+ 546:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 54d:	00 00 00 
+ 550:	5d                   	pop    %rbp
+ 551:	c3                   	retq   
+ 552:	0f 1f 40 00          	nopl   0x0(%rax)
+ 556:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 55d:	00 00 00 
+
+0000000000000560 <register_tm_clones>:
+ 560:	48 8d 3d a9 1a 20 00 	lea    0x201aa9(%rip),%rdi        # 202010 <__TMC_END__>
+ 567:	48 8d 35 a2 1a 20 00 	lea    0x201aa2(%rip),%rsi        # 202010 <__TMC_END__>
+ 56e:	55                   	push   %rbp
+ 56f:	48 29 fe             	sub    %rdi,%rsi
+ 572:	48 89 e5             	mov    %rsp,%rbp
+ 575:	48 c1 fe 03          	sar    $0x3,%rsi
+ 579:	48 89 f0             	mov    %rsi,%rax
+ 57c:	48 c1 e8 3f          	shr    $0x3f,%rax
+ 580:	48 01 c6             	add    %rax,%rsi
+ 583:	48 d1 fe             	sar    %rsi
+ 586:	74 18                	je     5a0 <register_tm_clones+0x40>
+ 588:	48 8b 05 61 1a 20 00 	mov    0x201a61(%rip),%rax        # 201ff0 <_ITM_registerTMCloneTable>
+ 58f:	48 85 c0             	test   %rax,%rax
+ 592:	74 0c                	je     5a0 <register_tm_clones+0x40>
+ 594:	5d                   	pop    %rbp
+ 595:	ff e0                	jmpq   *%rax
+ 597:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+ 59e:	00 00 
+ 5a0:	5d                   	pop    %rbp
+ 5a1:	c3                   	retq   
+ 5a2:	0f 1f 40 00          	nopl   0x0(%rax)
+ 5a6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 5ad:	00 00 00 
+
+00000000000005b0 <__do_global_dtors_aux>:
+ 5b0:	80 3d 59 1a 20 00 00 	cmpb   $0x0,0x201a59(%rip)        # 202010 <__TMC_END__>
+ 5b7:	75 2f                	jne    5e8 <__do_global_dtors_aux+0x38>
+ 5b9:	48 83 3d 37 1a 20 00 	cmpq   $0x0,0x201a37(%rip)        # 201ff8 <__cxa_finalize@GLIBC_2.2.5>
+ 5c0:	00 
+ 5c1:	55                   	push   %rbp
+ 5c2:	48 89 e5             	mov    %rsp,%rbp
+ 5c5:	74 0c                	je     5d3 <__do_global_dtors_aux+0x23>
+ 5c7:	48 8b 3d 3a 1a 20 00 	mov    0x201a3a(%rip),%rdi        # 202008 <__dso_handle>
+ 5ce:	e8 0d ff ff ff       	callq  4e0 <__cxa_finalize@plt>
+ 5d3:	e8 48 ff ff ff       	callq  520 <deregister_tm_clones>
+ 5d8:	c6 05 31 1a 20 00 01 	movb   $0x1,0x201a31(%rip)        # 202010 <__TMC_END__>
+ 5df:	5d                   	pop    %rbp
+ 5e0:	c3                   	retq   
+ 5e1:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+ 5e8:	f3 c3                	repz retq 
+ 5ea:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000005f0 <frame_dummy>:
+ 5f0:	55                   	push   %rbp
+ 5f1:	48 89 e5             	mov    %rsp,%rbp
+ 5f4:	5d                   	pop    %rbp
+ 5f5:	e9 66 ff ff ff       	jmpq   560 <register_tm_clones>
+
+00000000000005fa <main>:
+ 5fa:	55                   	push   %rbp
+ 5fb:	48 89 e5             	mov    %rsp,%rbp
+ 5fe:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+ 602:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+ 606:	4d 8b 80 ed da ae 00 	mov    0xaedaed(%r8),%r8
+ 60d:	4d 8b 88 ed da ae 00 	mov    0xaedaed(%r8),%r9
+ 614:	4d 8b 90 ed da ae 00 	mov    0xaedaed(%r8),%r10
+ 61b:	4d 8b 98 ed da ae 00 	mov    0xaedaed(%r8),%r11
+ 622:	4d 8b a0 ed da ae 00 	mov    0xaedaed(%r8),%r12
+ 629:	4d 8b a8 ed da ae 00 	mov    0xaedaed(%r8),%r13
+ 630:	4d 8b b0 ed da ae 00 	mov    0xaedaed(%r8),%r14
+ 637:	4d 8b b8 ed da ae 00 	mov    0xaedaed(%r8),%r15
+ 63e:	49 8b 80 ed da ae 00 	mov    0xaedaed(%r8),%rax
+ 645:	49 8b 98 ed da ae 00 	mov    0xaedaed(%r8),%rbx
+ 64c:	49 8b 88 ed da ae 00 	mov    0xaedaed(%r8),%rcx
+ 653:	49 8b 90 ed da ae 00 	mov    0xaedaed(%r8),%rdx
+ 65a:	49 8b b0 ed da ae 00 	mov    0xaedaed(%r8),%rsi
+ 661:	49 8b b8 ed da ae 00 	mov    0xaedaed(%r8),%rdi
+ 668:	49 8b a0 ed da ae 00 	mov    0xaedaed(%r8),%rsp
+ 66f:	49 8b a8 ed da ae 00 	mov    0xaedaed(%r8),%rbp
+ 676:	4d 8b 81 ed da ae 00 	mov    0xaedaed(%r9),%r8
+ 67d:	4d 8b 89 ed da ae 00 	mov    0xaedaed(%r9),%r9
+ 684:	4d 8b 91 ed da ae 00 	mov    0xaedaed(%r9),%r10
+ 68b:	4d 8b 99 ed da ae 00 	mov    0xaedaed(%r9),%r11
+ 692:	4d 8b a1 ed da ae 00 	mov    0xaedaed(%r9),%r12
+ 699:	4d 8b a9 ed da ae 00 	mov    0xaedaed(%r9),%r13
+ 6a0:	4d 8b b1 ed da ae 00 	mov    0xaedaed(%r9),%r14
+ 6a7:	4d 8b b9 ed da ae 00 	mov    0xaedaed(%r9),%r15
+ 6ae:	49 8b 81 ed da ae 00 	mov    0xaedaed(%r9),%rax
+ 6b5:	49 8b 99 ed da ae 00 	mov    0xaedaed(%r9),%rbx
+ 6bc:	49 8b 89 ed da ae 00 	mov    0xaedaed(%r9),%rcx
+ 6c3:	49 8b 91 ed da ae 00 	mov    0xaedaed(%r9),%rdx
+ 6ca:	49 8b b1 ed da ae 00 	mov    0xaedaed(%r9),%rsi
+ 6d1:	49 8b b9 ed da ae 00 	mov    0xaedaed(%r9),%rdi
+ 6d8:	49 8b a1 ed da ae 00 	mov    0xaedaed(%r9),%rsp
+ 6df:	49 8b a9 ed da ae 00 	mov    0xaedaed(%r9),%rbp
+ 6e6:	4d 8b 82 ed da ae 00 	mov    0xaedaed(%r10),%r8
+ 6ed:	4d 8b 8a ed da ae 00 	mov    0xaedaed(%r10),%r9
+ 6f4:	4d 8b 92 ed da ae 00 	mov    0xaedaed(%r10),%r10
+ 6fb:	4d 8b 9a ed da ae 00 	mov    0xaedaed(%r10),%r11
+ 702:	4d 8b a2 ed da ae 00 	mov    0xaedaed(%r10),%r12
+ 709:	4d 8b aa ed da ae 00 	mov    0xaedaed(%r10),%r13
+ 710:	4d 8b b2 ed da ae 00 	mov    0xaedaed(%r10),%r14
+ 717:	4d 8b ba ed da ae 00 	mov    0xaedaed(%r10),%r15
+ 71e:	49 8b 82 ed da ae 00 	mov    0xaedaed(%r10),%rax
+ 725:	49 8b 9a ed da ae 00 	mov    0xaedaed(%r10),%rbx
+ 72c:	49 8b 8a ed da ae 00 	mov    0xaedaed(%r10),%rcx
+ 733:	49 8b 92 ed da ae 00 	mov    0xaedaed(%r10),%rdx
+ 73a:	49 8b b2 ed da ae 00 	mov    0xaedaed(%r10),%rsi
+ 741:	49 8b ba ed da ae 00 	mov    0xaedaed(%r10),%rdi
+ 748:	49 8b a2 ed da ae 00 	mov    0xaedaed(%r10),%rsp
+ 74f:	49 8b aa ed da ae 00 	mov    0xaedaed(%r10),%rbp
+ 756:	4d 8b 83 ed da ae 00 	mov    0xaedaed(%r11),%r8
+ 75d:	4d 8b 8b ed da ae 00 	mov    0xaedaed(%r11),%r9
+ 764:	4d 8b 93 ed da ae 00 	mov    0xaedaed(%r11),%r10
+ 76b:	4d 8b 9b ed da ae 00 	mov    0xaedaed(%r11),%r11
+ 772:	4d 8b a3 ed da ae 00 	mov    0xaedaed(%r11),%r12
+ 779:	4d 8b ab ed da ae 00 	mov    0xaedaed(%r11),%r13
+ 780:	4d 8b b3 ed da ae 00 	mov    0xaedaed(%r11),%r14
+ 787:	4d 8b bb ed da ae 00 	mov    0xaedaed(%r11),%r15
+ 78e:	49 8b 83 ed da ae 00 	mov    0xaedaed(%r11),%rax
+ 795:	49 8b 9b ed da ae 00 	mov    0xaedaed(%r11),%rbx
+ 79c:	49 8b 8b ed da ae 00 	mov    0xaedaed(%r11),%rcx
+ 7a3:	49 8b 93 ed da ae 00 	mov    0xaedaed(%r11),%rdx
+ 7aa:	49 8b b3 ed da ae 00 	mov    0xaedaed(%r11),%rsi
+ 7b1:	49 8b bb ed da ae 00 	mov    0xaedaed(%r11),%rdi
+ 7b8:	49 8b a3 ed da ae 00 	mov    0xaedaed(%r11),%rsp
+ 7bf:	49 8b ab ed da ae 00 	mov    0xaedaed(%r11),%rbp
+ 7c6:	4d 8b 84 24 ed da ae 	mov    0xaedaed(%r12),%r8
+ 7cd:	00 
+ 7ce:	4d 8b 8c 24 ed da ae 	mov    0xaedaed(%r12),%r9
+ 7d5:	00 
+ 7d6:	4d 8b 94 24 ed da ae 	mov    0xaedaed(%r12),%r10
+ 7dd:	00 
+ 7de:	4d 8b 9c 24 ed da ae 	mov    0xaedaed(%r12),%r11
+ 7e5:	00 
+ 7e6:	4d 8b a4 24 ed da ae 	mov    0xaedaed(%r12),%r12
+ 7ed:	00 
+ 7ee:	4d 8b ac 24 ed da ae 	mov    0xaedaed(%r12),%r13
+ 7f5:	00 
+ 7f6:	4d 8b b4 24 ed da ae 	mov    0xaedaed(%r12),%r14
+ 7fd:	00 
+ 7fe:	4d 8b bc 24 ed da ae 	mov    0xaedaed(%r12),%r15
+ 805:	00 
+ 806:	49 8b 84 24 ed da ae 	mov    0xaedaed(%r12),%rax
+ 80d:	00 
+ 80e:	49 8b 9c 24 ed da ae 	mov    0xaedaed(%r12),%rbx
+ 815:	00 
+ 816:	49 8b 8c 24 ed da ae 	mov    0xaedaed(%r12),%rcx
+ 81d:	00 
+ 81e:	49 8b 94 24 ed da ae 	mov    0xaedaed(%r12),%rdx
+ 825:	00 
+ 826:	49 8b b4 24 ed da ae 	mov    0xaedaed(%r12),%rsi
+ 82d:	00 
+ 82e:	49 8b bc 24 ed da ae 	mov    0xaedaed(%r12),%rdi
+ 835:	00 
+ 836:	49 8b a4 24 ed da ae 	mov    0xaedaed(%r12),%rsp
+ 83d:	00 
+ 83e:	49 8b ac 24 ed da ae 	mov    0xaedaed(%r12),%rbp
+ 845:	00 
+ 846:	4d 8b 85 ed da ae 00 	mov    0xaedaed(%r13),%r8
+ 84d:	4d 8b 8d ed da ae 00 	mov    0xaedaed(%r13),%r9
+ 854:	4d 8b 95 ed da ae 00 	mov    0xaedaed(%r13),%r10
+ 85b:	4d 8b 9d ed da ae 00 	mov    0xaedaed(%r13),%r11
+ 862:	4d 8b a5 ed da ae 00 	mov    0xaedaed(%r13),%r12
+ 869:	4d 8b ad ed da ae 00 	mov    0xaedaed(%r13),%r13
+ 870:	4d 8b b5 ed da ae 00 	mov    0xaedaed(%r13),%r14
+ 877:	4d 8b bd ed da ae 00 	mov    0xaedaed(%r13),%r15
+ 87e:	49 8b 85 ed da ae 00 	mov    0xaedaed(%r13),%rax
+ 885:	49 8b 9d ed da ae 00 	mov    0xaedaed(%r13),%rbx
+ 88c:	49 8b 8d ed da ae 00 	mov    0xaedaed(%r13),%rcx
+ 893:	49 8b 95 ed da ae 00 	mov    0xaedaed(%r13),%rdx
+ 89a:	49 8b b5 ed da ae 00 	mov    0xaedaed(%r13),%rsi
+ 8a1:	49 8b bd ed da ae 00 	mov    0xaedaed(%r13),%rdi
+ 8a8:	49 8b a5 ed da ae 00 	mov    0xaedaed(%r13),%rsp
+ 8af:	49 8b ad ed da ae 00 	mov    0xaedaed(%r13),%rbp
+ 8b6:	4d 8b 86 ed da ae 00 	mov    0xaedaed(%r14),%r8
+ 8bd:	4d 8b 8e ed da ae 00 	mov    0xaedaed(%r14),%r9
+ 8c4:	4d 8b 96 ed da ae 00 	mov    0xaedaed(%r14),%r10
+ 8cb:	4d 8b 9e ed da ae 00 	mov    0xaedaed(%r14),%r11
+ 8d2:	4d 8b a6 ed da ae 00 	mov    0xaedaed(%r14),%r12
+ 8d9:	4d 8b ae ed da ae 00 	mov    0xaedaed(%r14),%r13
+ 8e0:	4d 8b b6 ed da ae 00 	mov    0xaedaed(%r14),%r14
+ 8e7:	4d 8b be ed da ae 00 	mov    0xaedaed(%r14),%r15
+ 8ee:	49 8b 86 ed da ae 00 	mov    0xaedaed(%r14),%rax
+ 8f5:	49 8b 9e ed da ae 00 	mov    0xaedaed(%r14),%rbx
+ 8fc:	49 8b 8e ed da ae 00 	mov    0xaedaed(%r14),%rcx
+ 903:	49 8b 96 ed da ae 00 	mov    0xaedaed(%r14),%rdx
+ 90a:	49 8b b6 ed da ae 00 	mov    0xaedaed(%r14),%rsi
+ 911:	49 8b be ed da ae 00 	mov    0xaedaed(%r14),%rdi
+ 918:	49 8b a6 ed da ae 00 	mov    0xaedaed(%r14),%rsp
+ 91f:	49 8b ae ed da ae 00 	mov    0xaedaed(%r14),%rbp
+ 926:	4d 8b 87 ed da ae 00 	mov    0xaedaed(%r15),%r8
+ 92d:	4d 8b 8f ed da ae 00 	mov    0xaedaed(%r15),%r9
+ 934:	4d 8b 97 ed da ae 00 	mov    0xaedaed(%r15),%r10
+ 93b:	4d 8b 9f ed da ae 00 	mov    0xaedaed(%r15),%r11
+ 942:	4d 8b a7 ed da ae 00 	mov    0xaedaed(%r15),%r12
+ 949:	4d 8b af ed da ae 00 	mov    0xaedaed(%r15),%r13
+ 950:	4d 8b b7 ed da ae 00 	mov    0xaedaed(%r15),%r14
+ 957:	4d 8b bf ed da ae 00 	mov    0xaedaed(%r15),%r15
+ 95e:	49 8b 87 ed da ae 00 	mov    0xaedaed(%r15),%rax
+ 965:	49 8b 9f ed da ae 00 	mov    0xaedaed(%r15),%rbx
+ 96c:	49 8b 8f ed da ae 00 	mov    0xaedaed(%r15),%rcx
+ 973:	49 8b 97 ed da ae 00 	mov    0xaedaed(%r15),%rdx
+ 97a:	49 8b b7 ed da ae 00 	mov    0xaedaed(%r15),%rsi
+ 981:	49 8b bf ed da ae 00 	mov    0xaedaed(%r15),%rdi
+ 988:	49 8b a7 ed da ae 00 	mov    0xaedaed(%r15),%rsp
+ 98f:	49 8b af ed da ae 00 	mov    0xaedaed(%r15),%rbp
+ 996:	4c 8b 80 ed da ae 00 	mov    0xaedaed(%rax),%r8
+ 99d:	4c 8b 88 ed da ae 00 	mov    0xaedaed(%rax),%r9
+ 9a4:	4c 8b 90 ed da ae 00 	mov    0xaedaed(%rax),%r10
+ 9ab:	4c 8b 98 ed da ae 00 	mov    0xaedaed(%rax),%r11
+ 9b2:	4c 8b a0 ed da ae 00 	mov    0xaedaed(%rax),%r12
+ 9b9:	4c 8b a8 ed da ae 00 	mov    0xaedaed(%rax),%r13
+ 9c0:	4c 8b b0 ed da ae 00 	mov    0xaedaed(%rax),%r14
+ 9c7:	4c 8b b8 ed da ae 00 	mov    0xaedaed(%rax),%r15
+ 9ce:	48 8b 80 ed da ae 00 	mov    0xaedaed(%rax),%rax
+ 9d5:	48 8b 98 ed da ae 00 	mov    0xaedaed(%rax),%rbx
+ 9dc:	48 8b 88 ed da ae 00 	mov    0xaedaed(%rax),%rcx
+ 9e3:	48 8b 90 ed da ae 00 	mov    0xaedaed(%rax),%rdx
+ 9ea:	48 8b b0 ed da ae 00 	mov    0xaedaed(%rax),%rsi
+ 9f1:	48 8b b8 ed da ae 00 	mov    0xaedaed(%rax),%rdi
+ 9f8:	48 8b a0 ed da ae 00 	mov    0xaedaed(%rax),%rsp
+ 9ff:	48 8b a8 ed da ae 00 	mov    0xaedaed(%rax),%rbp
+ a06:	4c 8b 83 ed da ae 00 	mov    0xaedaed(%rbx),%r8
+ a0d:	4c 8b 8b ed da ae 00 	mov    0xaedaed(%rbx),%r9
+ a14:	4c 8b 93 ed da ae 00 	mov    0xaedaed(%rbx),%r10
+ a1b:	4c 8b 9b ed da ae 00 	mov    0xaedaed(%rbx),%r11
+ a22:	4c 8b a3 ed da ae 00 	mov    0xaedaed(%rbx),%r12
+ a29:	4c 8b ab ed da ae 00 	mov    0xaedaed(%rbx),%r13
+ a30:	4c 8b b3 ed da ae 00 	mov    0xaedaed(%rbx),%r14
+ a37:	4c 8b bb ed da ae 00 	mov    0xaedaed(%rbx),%r15
+ a3e:	48 8b 83 ed da ae 00 	mov    0xaedaed(%rbx),%rax
+ a45:	48 8b 9b ed da ae 00 	mov    0xaedaed(%rbx),%rbx
+ a4c:	48 8b 8b ed da ae 00 	mov    0xaedaed(%rbx),%rcx
+ a53:	48 8b 93 ed da ae 00 	mov    0xaedaed(%rbx),%rdx
+ a5a:	48 8b b3 ed da ae 00 	mov    0xaedaed(%rbx),%rsi
+ a61:	48 8b bb ed da ae 00 	mov    0xaedaed(%rbx),%rdi
+ a68:	48 8b a3 ed da ae 00 	mov    0xaedaed(%rbx),%rsp
+ a6f:	48 8b ab ed da ae 00 	mov    0xaedaed(%rbx),%rbp
+ a76:	4c 8b 81 ed da ae 00 	mov    0xaedaed(%rcx),%r8
+ a7d:	4c 8b 89 ed da ae 00 	mov    0xaedaed(%rcx),%r9
+ a84:	4c 8b 91 ed da ae 00 	mov    0xaedaed(%rcx),%r10
+ a8b:	4c 8b 99 ed da ae 00 	mov    0xaedaed(%rcx),%r11
+ a92:	4c 8b a1 ed da ae 00 	mov    0xaedaed(%rcx),%r12
+ a99:	4c 8b a9 ed da ae 00 	mov    0xaedaed(%rcx),%r13
+ aa0:	4c 8b b1 ed da ae 00 	mov    0xaedaed(%rcx),%r14
+ aa7:	4c 8b b9 ed da ae 00 	mov    0xaedaed(%rcx),%r15
+ aae:	48 8b 81 ed da ae 00 	mov    0xaedaed(%rcx),%rax
+ ab5:	48 8b 99 ed da ae 00 	mov    0xaedaed(%rcx),%rbx
+ abc:	48 8b 89 ed da ae 00 	mov    0xaedaed(%rcx),%rcx
+ ac3:	48 8b 91 ed da ae 00 	mov    0xaedaed(%rcx),%rdx
+ aca:	48 8b b1 ed da ae 00 	mov    0xaedaed(%rcx),%rsi
+ ad1:	48 8b b9 ed da ae 00 	mov    0xaedaed(%rcx),%rdi
+ ad8:	48 8b a1 ed da ae 00 	mov    0xaedaed(%rcx),%rsp
+ adf:	48 8b a9 ed da ae 00 	mov    0xaedaed(%rcx),%rbp
+ ae6:	4c 8b 82 ed da ae 00 	mov    0xaedaed(%rdx),%r8
+ aed:	4c 8b 8a ed da ae 00 	mov    0xaedaed(%rdx),%r9
+ af4:	4c 8b 92 ed da ae 00 	mov    0xaedaed(%rdx),%r10
+ afb:	4c 8b 9a ed da ae 00 	mov    0xaedaed(%rdx),%r11
+ b02:	4c 8b a2 ed da ae 00 	mov    0xaedaed(%rdx),%r12
+ b09:	4c 8b aa ed da ae 00 	mov    0xaedaed(%rdx),%r13
+ b10:	4c 8b b2 ed da ae 00 	mov    0xaedaed(%rdx),%r14
+ b17:	4c 8b ba ed da ae 00 	mov    0xaedaed(%rdx),%r15
+ b1e:	48 8b 82 ed da ae 00 	mov    0xaedaed(%rdx),%rax
+ b25:	48 8b 9a ed da ae 00 	mov    0xaedaed(%rdx),%rbx
+ b2c:	48 8b 8a ed da ae 00 	mov    0xaedaed(%rdx),%rcx
+ b33:	48 8b 92 ed da ae 00 	mov    0xaedaed(%rdx),%rdx
+ b3a:	48 8b b2 ed da ae 00 	mov    0xaedaed(%rdx),%rsi
+ b41:	48 8b ba ed da ae 00 	mov    0xaedaed(%rdx),%rdi
+ b48:	48 8b a2 ed da ae 00 	mov    0xaedaed(%rdx),%rsp
+ b4f:	48 8b aa ed da ae 00 	mov    0xaedaed(%rdx),%rbp
+ b56:	4c 8b 86 ed da ae 00 	mov    0xaedaed(%rsi),%r8
+ b5d:	4c 8b 8e ed da ae 00 	mov    0xaedaed(%rsi),%r9
+ b64:	4c 8b 96 ed da ae 00 	mov    0xaedaed(%rsi),%r10
+ b6b:	4c 8b 9e ed da ae 00 	mov    0xaedaed(%rsi),%r11
+ b72:	4c 8b a6 ed da ae 00 	mov    0xaedaed(%rsi),%r12
+ b79:	4c 8b ae ed da ae 00 	mov    0xaedaed(%rsi),%r13
+ b80:	4c 8b b6 ed da ae 00 	mov    0xaedaed(%rsi),%r14
+ b87:	4c 8b be ed da ae 00 	mov    0xaedaed(%rsi),%r15
+ b8e:	48 8b 86 ed da ae 00 	mov    0xaedaed(%rsi),%rax
+ b95:	48 8b 9e ed da ae 00 	mov    0xaedaed(%rsi),%rbx
+ b9c:	48 8b 8e ed da ae 00 	mov    0xaedaed(%rsi),%rcx
+ ba3:	48 8b 96 ed da ae 00 	mov    0xaedaed(%rsi),%rdx
+ baa:	48 8b b6 ed da ae 00 	mov    0xaedaed(%rsi),%rsi
+ bb1:	48 8b be ed da ae 00 	mov    0xaedaed(%rsi),%rdi
+ bb8:	48 8b a6 ed da ae 00 	mov    0xaedaed(%rsi),%rsp
+ bbf:	48 8b ae ed da ae 00 	mov    0xaedaed(%rsi),%rbp
+ bc6:	4c 8b 87 ed da ae 00 	mov    0xaedaed(%rdi),%r8
+ bcd:	4c 8b 8f ed da ae 00 	mov    0xaedaed(%rdi),%r9
+ bd4:	4c 8b 97 ed da ae 00 	mov    0xaedaed(%rdi),%r10
+ bdb:	4c 8b 9f ed da ae 00 	mov    0xaedaed(%rdi),%r11
+ be2:	4c 8b a7 ed da ae 00 	mov    0xaedaed(%rdi),%r12
+ be9:	4c 8b af ed da ae 00 	mov    0xaedaed(%rdi),%r13
+ bf0:	4c 8b b7 ed da ae 00 	mov    0xaedaed(%rdi),%r14
+ bf7:	4c 8b bf ed da ae 00 	mov    0xaedaed(%rdi),%r15
+ bfe:	48 8b 87 ed da ae 00 	mov    0xaedaed(%rdi),%rax
+ c05:	48 8b 9f ed da ae 00 	mov    0xaedaed(%rdi),%rbx
+ c0c:	48 8b 8f ed da ae 00 	mov    0xaedaed(%rdi),%rcx
+ c13:	48 8b 97 ed da ae 00 	mov    0xaedaed(%rdi),%rdx
+ c1a:	48 8b b7 ed da ae 00 	mov    0xaedaed(%rdi),%rsi
+ c21:	48 8b bf ed da ae 00 	mov    0xaedaed(%rdi),%rdi
+ c28:	48 8b a7 ed da ae 00 	mov    0xaedaed(%rdi),%rsp
+ c2f:	48 8b af ed da ae 00 	mov    0xaedaed(%rdi),%rbp
+ c36:	4c 8b 84 24 ed da ae 	mov    0xaedaed(%rsp),%r8
+ c3d:	00 
+ c3e:	4c 8b 8c 24 ed da ae 	mov    0xaedaed(%rsp),%r9
+ c45:	00 
+ c46:	4c 8b 94 24 ed da ae 	mov    0xaedaed(%rsp),%r10
+ c4d:	00 
+ c4e:	4c 8b 9c 24 ed da ae 	mov    0xaedaed(%rsp),%r11
+ c55:	00 
+ c56:	4c 8b a4 24 ed da ae 	mov    0xaedaed(%rsp),%r12
+ c5d:	00 
+ c5e:	4c 8b ac 24 ed da ae 	mov    0xaedaed(%rsp),%r13
+ c65:	00 
+ c66:	4c 8b b4 24 ed da ae 	mov    0xaedaed(%rsp),%r14
+ c6d:	00 
+ c6e:	4c 8b bc 24 ed da ae 	mov    0xaedaed(%rsp),%r15
+ c75:	00 
+ c76:	48 8b 84 24 ed da ae 	mov    0xaedaed(%rsp),%rax
+ c7d:	00 
+ c7e:	48 8b 9c 24 ed da ae 	mov    0xaedaed(%rsp),%rbx
+ c85:	00 
+ c86:	48 8b 8c 24 ed da ae 	mov    0xaedaed(%rsp),%rcx
+ c8d:	00 
+ c8e:	48 8b 94 24 ed da ae 	mov    0xaedaed(%rsp),%rdx
+ c95:	00 
+ c96:	48 8b b4 24 ed da ae 	mov    0xaedaed(%rsp),%rsi
+ c9d:	00 
+ c9e:	48 8b bc 24 ed da ae 	mov    0xaedaed(%rsp),%rdi
+ ca5:	00 
+ ca6:	48 8b a4 24 ed da ae 	mov    0xaedaed(%rsp),%rsp
+ cad:	00 
+ cae:	48 8b ac 24 ed da ae 	mov    0xaedaed(%rsp),%rbp
+ cb5:	00 
+ cb6:	4c 8b 85 ed da ae 00 	mov    0xaedaed(%rbp),%r8
+ cbd:	4c 8b 8d ed da ae 00 	mov    0xaedaed(%rbp),%r9
+ cc4:	4c 8b 95 ed da ae 00 	mov    0xaedaed(%rbp),%r10
+ ccb:	4c 8b 9d ed da ae 00 	mov    0xaedaed(%rbp),%r11
+ cd2:	4c 8b a5 ed da ae 00 	mov    0xaedaed(%rbp),%r12
+ cd9:	4c 8b ad ed da ae 00 	mov    0xaedaed(%rbp),%r13
+ ce0:	4c 8b b5 ed da ae 00 	mov    0xaedaed(%rbp),%r14
+ ce7:	4c 8b bd ed da ae 00 	mov    0xaedaed(%rbp),%r15
+ cee:	48 8b 85 ed da ae 00 	mov    0xaedaed(%rbp),%rax
+ cf5:	48 8b 9d ed da ae 00 	mov    0xaedaed(%rbp),%rbx
+ cfc:	48 8b 8d ed da ae 00 	mov    0xaedaed(%rbp),%rcx
+ d03:	48 8b 95 ed da ae 00 	mov    0xaedaed(%rbp),%rdx
+ d0a:	48 8b b5 ed da ae 00 	mov    0xaedaed(%rbp),%rsi
+ d11:	48 8b bd ed da ae 00 	mov    0xaedaed(%rbp),%rdi
+ d18:	48 8b a5 ed da ae 00 	mov    0xaedaed(%rbp),%rsp
+ d1f:	48 8b ad ed da ae 00 	mov    0xaedaed(%rbp),%rbp
+ d26:	b8 00 00 00 00       	mov    $0x0,%eax
+ d2b:	5d                   	pop    %rbp
+ d2c:	c3                   	retq   
+ d2d:	0f 1f 00             	nopl   (%rax)
+
+0000000000000d30 <__libc_csu_init>:
+ d30:	41 57                	push   %r15
+ d32:	41 56                	push   %r14
+ d34:	49 89 d7             	mov    %rdx,%r15
+ d37:	41 55                	push   %r13
+ d39:	41 54                	push   %r12
+ d3b:	4c 8d 25 ae 10 20 00 	lea    0x2010ae(%rip),%r12        # 201df0 <__frame_dummy_init_array_entry>
+ d42:	55                   	push   %rbp
+ d43:	48 8d 2d ae 10 20 00 	lea    0x2010ae(%rip),%rbp        # 201df8 <__init_array_end>
+ d4a:	53                   	push   %rbx
+ d4b:	41 89 fd             	mov    %edi,%r13d
+ d4e:	49 89 f6             	mov    %rsi,%r14
+ d51:	4c 29 e5             	sub    %r12,%rbp
+ d54:	48 83 ec 08          	sub    $0x8,%rsp
+ d58:	48 c1 fd 03          	sar    $0x3,%rbp
+ d5c:	e8 57 f7 ff ff       	callq  4b8 <_init>
+ d61:	48 85 ed             	test   %rbp,%rbp
+ d64:	74 20                	je     d86 <__libc_csu_init+0x56>
+ d66:	31 db                	xor    %ebx,%ebx
+ d68:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+ d6f:	00 
+ d70:	4c 89 fa             	mov    %r15,%rdx
+ d73:	4c 89 f6             	mov    %r14,%rsi
+ d76:	44 89 ef             	mov    %r13d,%edi
+ d79:	41 ff 14 dc          	callq  *(%r12,%rbx,8)
+ d7d:	48 83 c3 01          	add    $0x1,%rbx
+ d81:	48 39 dd             	cmp    %rbx,%rbp
+ d84:	75 ea                	jne    d70 <__libc_csu_init+0x40>
+ d86:	48 83 c4 08          	add    $0x8,%rsp
+ d8a:	5b                   	pop    %rbx
+ d8b:	5d                   	pop    %rbp
+ d8c:	41 5c                	pop    %r12
+ d8e:	41 5d                	pop    %r13
+ d90:	41 5e                	pop    %r14
+ d92:	41 5f                	pop    %r15
+ d94:	c3                   	retq   
+ d95:	90                   	nop
+ d96:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ d9d:	00 00 00 
+
+0000000000000da0 <__libc_csu_fini>:
+ da0:	f3 c3                	repz retq 
+
+Disassembly of section .fini:
+
+0000000000000da4 <_fini>:
+ da4:	48 83 ec 08          	sub    $0x8,%rsp
+ da8:	48 83 c4 08          	add    $0x8,%rsp
+ dac:	c3                   	retq   

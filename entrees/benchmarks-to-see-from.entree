@@ -1,0 +1,46 @@
+tyrel@fearsome:~/celix$ stay ./build
+XQfPca4.stay
+R0NrBxC.alert
+./build > XQfPca4.stay 2> R0NrBxC.alert
+vim R0NrBxC.alert
+tyrel@fearsome:~/celix$ time ./sequences-secsv libc.so.6 19234b 1923b2 moveups_shakes
+--------------------------------------
+| asm sequences as c-chart constants |
+--------------------------------------
+static const sec moveups_shakes_0[19] = {0xb5, 0xbc, 0xd8, 0x9a, 0xa0, 0x00, 0x00, 0x00, 0x21, 0x60, 0xea, 0x86, 0xb0, 0x9e, 0x50, 0xa5, 0xd0, 0x10, 0xaa};
+static const source moveups_shakes[1] = {moveups_shakes_0};
+static const quad moveups_shakes_naof_secs[1] = {19};
+naof-secsv-vecters | 1
+
+real	0m0.834s
+user	0m0.624s
+sys	0m0.209s
+tyrel@fearsome:~/celix$ stay ./build
+mPoWCSf.stay
+FDoIDj3.alert
+./build > mPoWCSf.stay 2> FDoIDj3.alert
+vim FDoIDj3.alert
+tyrel@fearsome:~/celix$ time ./sequences-secsv libc.so.6 19234b 1923b2 moveups_shakes
+Segmentation fault (core dumped)
+
+real	0m0.591s
+user	0m0.475s
+sys	0m0.024s
+tyrel@fearsome:~/celix$ stay ./build
+ZvxReOc.stay
+Fr7qHq7.alert
+./build > ZvxReOc.stay 2> Fr7qHq7.alert
+vim Fr7qHq7.alert
+tyrel@fearsome:~/celix$ time ./sequences-secsv libc.so.6 19234b 1923b2 moveups_shakes
+--------------------------------------
+| asm sequences as c-chart constants |
+--------------------------------------
+static const sec moveups_shakes_0[6] = {0x62, 0xf1, 0x7c, 0x48, 0x10, 0x06};
+static const source moveups_shakes[1] = {moveups_shakes_0};
+static const quad moveups_shakes_naof_secs[1] = {6};
+naof-secsv-vecters | 1
+
+real	0m0.484s
+user	0m0.463s
+sys	0m0.022s
+tyrel@fearsome:~/celix$

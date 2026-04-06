@@ -1,0 +1,27 @@
+body {
+	background-color: rgb(0, 0, 0);
+	color: rgb(27, 227, 27);
+	font-size: 11px;
+	margin: 0px;
+	margin-left: 5px;
+	padding: 0px;
+	font-family: monospace;
+}
+
+#tsc-0shell {
+	display: block;
+	overflow-y: auto;
+}
+
+#clerk-com {
+	display: none;
+}
+
+.tsc-type {
+	padding-top: 7px;
+}
+
+.para {
+	padding-top: 2px;
+	padding-bottom: 27px;
+}
