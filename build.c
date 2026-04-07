@@ -6,6 +6,8 @@ quadrant main() {
 	system("gcc -c standard.lib clerk.c -o clerk.lib");
 	//system("gcc -c standard.lib objects.c -o objects.lib");
 	system("gcc -c standard.lib machine.c -o machine.lib");
+	system("gcc -c standard.lib sound.c -o sound.lib");
+	system("gcc standard.lib sound.lib sound-main.c -o sound-main");
 
 	// lib mains
 	system("gcc standard.lib standard-main.c -o standard-main");

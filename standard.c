@@ -361,6 +361,28 @@ quadrant entree_to_number(source entree, quadrant entree_distance, quadrant base
   return number;
 }
 
+quadrant secs_to_number(source secs, quadrant naof_secs, quadrant_reference number) {
+	//printf("naof-secs | %lu\n", naof_secs);
+  number[0] = 0;
+  quadrant focus = 1;
+	if(naof_secs > 0) {
+		quadrant site = naof_secs - 1;
+		while(true) {
+			sec singular = secs[site];
+			//printf("singular | %lu\n", singular);
+			quadrant add_number = (singular * focus);
+			number[0] += (add_number);
+			focus = focus * 0x100;
+			if(site == 0) {
+				break;
+			}
+			site -= 1;
+		}
+	}
+	//printf("entree-to-number-com-base | %lu\n", base);
+  return number;
+}
+
 quadrant number_aof(source space, quadrant naof_secs) {
 	quadrant base = 1;
 	quadrant number = 0;

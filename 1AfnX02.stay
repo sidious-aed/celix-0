@@ -1,0 +1,624 @@
+-
+c
+-
+-------------------
+naof-entrees-secs.c
+-------------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+--------------
+log-terminal.c
+--------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+--------
+clerkr.c
+--------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------
+non-cltqs.c
+-----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------
+zero.c
+------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----------
+standard.c
+----------
+vast wide_com(source init, source com, quad naof_com_secs)
+quadrant get_naof_secs(source entree)
+quadrant wide_naof_secs(source entree)
+quadrant get_naof_com_secs(source entree)
+quadrant replicate(sec rune, source destination, quadrant naof_secs)
+quadrant strip(source entree, source destination, quadrant naof_secs)
+vast reverse(source entree, source destination, quadrant naof_secs)
+vast place(reader space, writer destination, quadrant distance)
+vast sseed(source seed, quad seed_site)
+quadrant number_to_entree(quadrant number, source entree, quadrant base)
+quadrant presice_to_entree(quadrant height, quadrant bar, quadrant base, source entree)
+quadrant entree_to_number(source entree, quadrant entree_distance, quadrant base, quadrant_reference number)
+quadrant secs_to_number(source secs, quadrant naof_secs, quadrant_reference number)
+quadrant number_aof(source space, quadrant naof_secs)
+quad is_base(source entree, quad naof_entree_secs, quad base)
+quadrant compair_spaces(source seek, quadrant seek_distance, source space, quadrant space_distance)
+squad orderc_spaces(source entree0, quad naof_entree_secs0, source entree1, quad naof_entree_secs1)
+directional seek_space(source seek, quadrant seek_distance, source space, quadrant space_distance)
+vast add_to_entree(source entree, quadrant naof_secs, source destination, writer site)
+vast add_seed62_to_entree(quadrant naof_secs, source destination, writer site)
+quadrant get_time_name(source time_name)
+quadrant standardise_entree(source entree, source destination)
+vast see_quad(source relay, quad number, quad base)
+vast see_spaceb(source relay, source space, quadrant distance, quad base)
+vast see_base16(source relay, source space, quadrant distance)
+vast see_encoded(source entree, quadrant naof_entree_secs, quadrant base)
+vast add_encoded(source encoded, quad naof_encoded_secs, source entree, writer entree_site, quadrant base, sec init_vec_sym, sec com_vec_sym)
+source get_grid_secs(writer grid, quadrant naof_secs, writer tab)
+source get_grid_secs(writer grid, quadrant naof_secs, writer tab)
+vast create_vecter(writer grid, quadrant naof_secs, quadrant breadth, writer * vecter)
+vast add_to_vecter(writer grid, source element, writer * vecter)
+vast replicate_to_sec_vecter(writer grid, sec reps, quadrant naof_rep_secs, writer * vecter)
+vast add_string_to_sec_vecter(writer grid, source string, quadrant naof_string_secs, writer * vecter)
+vast com_string_to_sec_vecter(writer grid, source string, quadrant naof_string_secs, writer * vecter, quad sec_site)
+vast expand_for_string_to_sec_vecter(writer grid, quadrant naof_string_secs, writer * vecter)
+vast add_file_string_to_sec_vecter(writer grid, source file_name, quad site, quad naof_string_secs, writer * vecter)
+vast order_vecter(writer grid, writer vecter, quad naof_element_quads, quad entree_qsite, quad naof_entree_secs_qsite, writer ordered_vec)
+vast see_string(writer vec)
+vast scroll_to_then(source entree, writer entree_site)
+vast noom_nodes(writer grid, source entree, quadrant naof_secs, writer nodes)
+vast statemint(source statemint, quadrant naof_secs, quadrant base, directional * number)
+vast statemints(writer grid, source statemints_source, quadrant naof_statemints_secs, directional * number, quadrant base)
+vast view_header(source relay)
+vast create_motion(writer grid, source name, quad naof_name_secs, quad type, quad breadth, quad naof_element_secs, writer rmotion)
+vast expand_for_motion_string(writer grid, quad naof_secs, writer rmotion)
+squad wide_seek(source seek, quad naof_seek_secs, source entree, quad naof_entree_secs)
+
+--------------------
+equations-main-npv.c
+--------------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+--------
+malloc.c
+--------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------
+base.c
+------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------
+dc-server.c
+-----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------------------
+lab-fulfillaought.c
+-------------------
+quadrant write_quad_teir_1(source * q)
+quadrant write_quad_teir_2(source * q)
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------
+c-pairs.c
+---------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------
+chart-elf.c
+-----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------------------
+aux-chart-binary.c
+------------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------------
+get-object-file.c
+-----------------
+quadrant main(quadrant naof_params, source_vecter ** params)
+
+---------------
+machine-calls.c
+---------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------------
+list-files.c
+------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+--------------
+vecters-main.c
+--------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----
+mul.c
+-----
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----
+caf.c
+-----
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------------
+inject-main.c
+-------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------------
+view-space-file.c
+-----------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------
+build-msh.c
+-----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------
+build-eqs.c
+-----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------
+mshell0.c
+---------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------------
+for-c-pairs.c
+-------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----
+gt.c
+----
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------------
+file-secs-sites.c
+-----------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------------
+statemints.c
+------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------------
+stack-call.c
+------------
+quad main()
+
+---------
+is-base.c
+---------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----------------
+abstract-pairs.c
+----------------
+// tyrel@fearsome:~/celix$ ./abstract "\tasm(\"mov \$0xaedaed, %^\")
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------
+build.c
+-------
+quadrant main()
+
+---------
+machine.c
+---------
+squad get_entree_site(source_vecter entrees, reader entrees_naof_secs, quad naof_entrees, source entree, quad naof_entree_secs)
+quad asm_stay_to(source asm_sign, quad naof_asm_sign_secs, quad stack_site, quad com_stay_site, source space)
+quad asm_short_stay_to(source asm_sign, quad naof_asm_sign_secs, quad stack_site, quad com_stay_site, source space)
+quad asm_dynamic_stay_to(source mod_register, quad naof_mod_register_secs, source space)
+quad asm_call_to(quad stack_site, quad com_stay_site, source space)
+quad asm_dynamic_call_to(source mod_register, quad naof_mod_register_secs, source space)
+quad asm_dynamic_castl_stay_to(quad cast_site, source mod_register, quad naof_mod_register_secs, source space)
+quad asm_push_register(source register_name, quad naof_register_name_secs, source space)
+quad asm_pop_register(source register_name, quad naof_register_name_secs, source space)
+quad asm_lea_registers(source registers, quad naof_registers_secs, quad site, source space)
+quad asm_set_register(quad constant, source register_name, quad naof_register_secs, source space)
+quad asm_mov_registers(source registers, quad naof_registers_secs, source space)
+quad asm_mov_castl_registers(source registers, quad naof_registers_secs, quad site, source space)
+quad asm_mov_castr_registers(source registers, quad naof_registers_secs, quad site, source space)
+quad asm_mov_sec_castl_registers(source registers, quad naof_registers_secs, quad site, source space)
+quad asm_mov_sec_castr_registers(source registers, quad naof_registers_secs, quad site, source space)
+quad asm_add_const_register(source register_name, quad naof_register_secs, quad constant, source space)
+quad asm_add_registers(source registers, quad naof_registers_secs, source space)
+quad asm_add_register_castr(source registers, quad naof_registers_secs, quad cast_site, source space)
+quad asm_sub_const_register(source register_name, quad naof_register_secs, quad constant, source space)
+quad asm_sub_registers(source registers, quad naof_registers_secs, source space)
+quad asm_sub_register_castr(source registers, quad naof_registers_secs, quad cast_site, source space)
+quad asm_and_const_register(source register_name, quad naof_register_secs, quad constant, source space)
+quad asm_and_registers(source registers, quad naof_registers_secs, source space)
+quad asm_xor_const_register(source register_name, quad naof_register_secs, quad constant, source space)
+quad asm_xor_registers(source registers, quad naof_registers_secs, source space)
+quad asm_or_const_register(source register_name, quad naof_register_secs, quad constant, source space)
+quad asm_or_registers(source registers, quad naof_registers_secs, source space)
+quad asm_not_register(source register_name, quad naof_register_secs, source space)
+quad asm_multiply_register_with_stack(quad cast_site, source register_name, quad naof_register_secs, source space)
+quad asm_multiply_registers(quad cast_site, source registers, quad naof_registers_secs, source space)
+quad asm_divide(source register_name, quad naof_register_secs, source space)
+quad asm_divide_to_returns(quad cast_site, source register_name, quad naof_register_secs, source space)
+quad asm_cmp_const_register(source register_name, quad naof_register_secs, quad constant, source space)
+quad asm_cmp_registers(source registers, quad naof_registers_secs, source space)
+quad asm_nops(quad naof_nops, source space)
+quad asm_syscall(source space)
+quad asm_return(source space)
+quad asm_store_state(source space)
+quad asm_restore_state(source space)
+quad asm_repz_cmp(source space)
+quad asm_repz_movq(source space)
+quad asm_repz_movb(source space)
+quad asm_repz_cmpq(source space)
+quad asm_repz_cmpb(source space)
+vast abstract_thingy()
+vast call_site(source calls, source name, writer cs)
+
+------------
+spiro-dyno.c
+------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----------------
+seek-file-site.c
+----------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+--------
+strstr.c
+--------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------------
+clear-desk.c
+------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----
+mf.c
+----
+quadrant main(quadrant naof_params, source_vecter params)
+
+--------------
+objects-main.c
+--------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------
+dran.c
+------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------------------
+equations-main-ukdirv.c
+-----------------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------
+sequences.c
+-----------
+vast poly_alert(source relay)
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------
+fseqs.c
+-------
+vast poly_alert(source relay)
+quadrant main(quadrant naof_params, source_vecter params)
+
+----------------
+equations-main.c
+----------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------------
+view-assembly.c
+---------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------
+genseed.c
+---------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----------------
+entrees-vecter.c
+----------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------------
+aux-expansion.c
+---------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------
+dc-client.c
+-----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------------
+build-shell.c
+-------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------
+dstr.c
+------
+quadrant main(quadrant naof_params, source_vecter params)
+
+--------------
+chart-binary.c
+--------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------------
+sample-reader.c
+---------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----------
+memstats.c
+----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------------
+vecter-entree.c
+---------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------
+objects.c
+---------
+quad get_object_file_name(source binary_name, source object_name)
+quad get_object_file(source binary_name, quad is_always)
+vast get_object(ip_file object_file, writer object, writer naof_object_secs)
+quad is_aux_segment(source object, quad naof_object_secs, quad obj_site)
+quad derive_machine_secs(source object, quad naof_object_secs, quad obj_site, source machine_secs, writer naof_machine_secs)
+quad get_asm_secs_from_object(source object, quad naof_object_secs, quad binary_site, source machine_secs, writer naof_machine_secs)
+
+---------
+sc-main.c
+---------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------
+dyno.c
+------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------------
+svects-main.c
+-------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------
+strstr-ew.c
+-----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------------
+standard-main.c
+---------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----------
+view-asm.c
+----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----------
+asm-secs.c
+----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----------------
+sequences-full.c
+----------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------------
+build-equations.c
+-----------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------
+equations.c
+-----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----------
+abstract.c
+----------
+// tyrel@fearsome:~/celix$ ./abstract "\tasm(\"mov \$0xaedaed, %^\")
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------------
+aux-sc-main.c
+-------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+--------------
+machine-main.c
+--------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------
+c-shell.c
+---------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----
+rn.c
+----
+quadrant main(quadrant naof_params, source_vecter ** params)
+
+--------------
+build-mshell.c
+--------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------
+seqs.c
+------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------
+i-sim.c
+-------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------------
+clear-desks.c
+-------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------------
+clerk-main.c
+------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----
+cn.c
+----
+quadrant main(quadrant naof_params, source_vecter ** params)
+
+---------------
+naof-elements.c
+---------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+--------------
+cf-expansion.c
+--------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------------------
+get-bin-calls-chart.c
+---------------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+--------------
+entrees-meta.c
+--------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------
+man-shell.c
+-----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------
+convert.c
+---------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------
+ngrep.c
+-------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----------
+statents.c
+----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------------
+vects-main.c
+------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------
+lstr.c
+------
+quadrant main(quadrant naof_params, source_vecter params)
+
+----
+em.c
+----
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------------
+sequences-secsv.c
+-----------------
+quadrant main(quadrant naof_params, source_vecter ** params)
+
+--------
+mshell.c
+--------
+unsigned long main(unsigned long naof_params, char ** params)
+
+-------
+shell.c
+-------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------------
+b16-as-entree.c
+---------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-----------
+naof-secs.c
+-----------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------
+rgrep.c
+-------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------------
+quations-main.c
+---------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+------------
+view-space.c
+------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+---------
+cf-main.c
+---------
+quadrant main(quadrant naof_params, source_vecter params)
+
+--------------------
+equations-main-ccv.c
+--------------------
+quadrant main(quadrant naof_params, source_vecter params)
+
+-------
+clerk.c
+-------
+vast i_sim_from_clerk()
+quadrant clerk_code(source entree, writer entree_site)
+vast a_pause_for_a_clerk(source nonce_name)
+vast clerk_stay(source binary_name, source_vecter params, source_vecter environment, source file_name)
+quadrant node_meta(writer grid, source node_name, writer rnode_meta)
+vast node_meta_completion(quadrant_reference nm)
+vast index_chart(source * grid, source chart_name, source * chart, writer index)
+vast get_new_chart(source * grid, quadrant chart_breadth, source * chart, writer index)
+vast add_hash_collumn(source element, quadrant_reference element_site, source name, quadrant naof_name_secs, source entree, quadrant naof_entree_secs)
+vast add_element(source * grid, source element, quadrant element_site, source * chart, writer * index)
+vast save_chart(source chart, writer index, source name)
+vast get_chart_element(source chart, writer index, quadrant site, source element, writer element_site)
+vast get_collumn(source element, quadrant element_site, source collumn_name, quadrant naof_collumn_name_secs, source collumn, writer collumn_site)
+quadrant through_element(source chart, writer index, quadrant esite, source * rname, quadrant_reference rname_site, source rentree, quadrant_reference rentree_site, quadrant site)
+vast view_index(writer index)
+vast view_full_chart(source * grid, source chart, writer index, writer view_chart)
+vast view_elements(source chart, writer index, writer view_sites)
+quadrant get_nao_file(squad naof_secs)
+vast clear_clerk_bin()
+quadrant get_naof_lines(source file_name)
+vast view_params(quadrant naof_params, source_vecter params)

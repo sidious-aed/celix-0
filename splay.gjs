@@ -20,6 +20,7 @@ let play_sound = function(path_name) {
 	player.set_state(Gst.State.PAUSED);
 	player.get_state(1000 * 1000 * 100);
 	let [res, duration] = player.query_duration(Gst.Format.TIME);
+	print("res | " + res);
 	player.set_state(Gst.State.NULL);
 	if(res) {
 		duration /= 1000000000;
@@ -37,6 +38,28 @@ let play_sound = function(path_name) {
 let naof_params = ARGV.length;
 let acfn = "";
 let sns;
+let initt;
+let post_init_glance = function() {
+	let elapsed = Date.now() - initt;
+	if(elapsed < 0) {
+		GLib.timeout_add(GLib.PRIORITY_DEFAULT, 127, post_init_glance);
+	}
+	print("elapsed | " + elapsed);
+	print("sns | " + sns);
+	if(sns != -1 && ((elapsed / 1000) >= sns)) {
+		let acfn_site = acfn.length;
+		if(acfn_site > 0) {
+			let file = Gio.File.new_for_path(acfn);
+			file.delete_async(GLib.PRIORITY_DEFAULT, null, function(source, result) {
+				source.delete_finish(result);
+			});
+			print("<--> in post-init-glance. clearing out pass cache and exiting.");
+			Gtk.main_quit();
+		}
+	}
+	GLib.timeout_add(GLib.PRIORITY_DEFAULT, 127, post_init_glance);
+}
+
 if(naof_params != 1) {
 	print("<--> just need a sound-file-name is all.");
 } else {
@@ -71,30 +94,16 @@ if(naof_params != 1) {
 		let [success, pid, stdin, stdout, stderr] = GLib.spawn_sync(
 			null, comand, null, GLib.SpawnFlags.SEARCH_PATH, null
 		);
-		let [ps, ns] = play_sound(acfn);
-		sns = ns + 0.127;
-		print("ps | " + ps);
-		let initt = Date.now();
-		let post_init_glance = function() {
-			let elapsed = Date.now() - initt;
-			//print("elapsed | " + elapsed);
-			//print("sns | " + sns);
-			if(sns != -1 && ((elapsed / 1000) >= sns)) {
-				let acfn_site = acfn.length;
-				if(acfn_site > 0) {
-					let file = Gio.File.new_for_path(acfn);
-					file.delete_async(GLib.PRIORITY_DEFAULT, null, function(source, result) {
-						source.delete_finish(result);
-					});
-				}
-				print("<--> in post-init-glance. clearing out pass cache and exiting.");
-				Gtk.main_quit();
-				/*
-				*/
-			}
-			GLib.timeout_add(GLib.PRIORITY_DEFAULT, 127, post_init_glance);
-		}
-		post_init_glance();
+		print("success | " + success);
+		GLib.spawn_close_pid(pid);
+		initt = Date.now();
+		let [wpd,sns] = play_sound(acfn);
+		print("was-played | " + wpd);
+		print("sns | " + sns);
+		//post_init_glance();
+		/*
+		await();
+		*/
 		Gtk.main();
 	} else {
 		print("<--> could not find " + fn + ".");
