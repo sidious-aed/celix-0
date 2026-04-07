@@ -11,6 +11,7 @@ body {
 #tsc-0shell {
 	display: block;
 	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 #clerk-com {

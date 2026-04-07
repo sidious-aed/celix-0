@@ -545,8 +545,8 @@ fileMonitor.connect('changed', (_fileMonitor, file, otherFile, eventType) => {
 	//print("event-type | " + eventType);
 	//print("created-type | " + Gio.FileMonitorEvent.CREATED);
 	if(eventType == 3) {
-		//print("name | " + name);
-		//print("extension | " + extension);
+		print("name | " + name);
+		print("extension | " + extension);
 		if(extension == "print") {
 			//print("is in print.");
 			es_print(fn, file);

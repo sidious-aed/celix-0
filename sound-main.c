@@ -1,8 +1,23 @@
 #include "./standard.h"
 #define sickle_3m 0x2932e0
 
-double org0_sign(quad tone, quad site, quad samples_ps) {
-	quad in_second = site % samples_ps;
+double cobraess0_sign(quad tone, quad site) {
+	quad x = site % tone;
+	quad tone_portion = tone / 2;
+	if(x >= tone_portion) {
+		x = tone_portion - (x - tone_portion);
+	}
+	//printf("x | %lu\n", x);
+	double xp = (double)x / (double)tone;
+	xp = 1 - xp;
+	//printf("xp | %lf\n", xp);
+	double y = 1 - (xp * xp);
+	//printf("y | %lf\n", y);
+	return y;
+}
+
+double org0_sign(quad tone, quad site) {
+	//quad in_second = site % samples_ps;
 	quad in_tone = site % tone;
 	quad tone_portion = tone / 2;
 	if(in_tone >= tone_portion) {
@@ -35,6 +50,8 @@ quadrant main(quadrant naof_params, source_vecter params) {
 	quad tone2 = 700;
 	quad tone3 = 721;
 	quad tone4 = 521;
+	quad tone5 = 906;
+	quad tone6 = 369;
 	// write-tones-init
 	quad smpl_site = 0;
 	double amps_facter = 0.5;
@@ -47,13 +64,14 @@ quadrant main(quadrant naof_params, source_vecter params) {
 		//double tmf = org0_sign(tone1, smpl_site, samples_ps);
 		//double tmf = org0_sign(tone2, smpl_site, samples_ps);
 		//double tmf = org0_sign(tone3, smpl_site, samples_ps);
-		double tmf = org0_sign(tone4, smpl_site, samples_ps);
+		//double tmf = org0_sign(tone4, smpl_site);
 		//printf("tone-mod-facter | %lf\n", tmf);
+		double tmf = cobraess0_sign(tone6, smpl_site);
 		quad sample = sample_bar * tmf;
 		//printf("sample | %lu\n", sample);
 		smpl_site += 1;
 		double into_second_facter = ((double)into_osec) / ((double)samples_ps);
-		into_second_facter = 0.5 + (into_second_facter / 2);
+		into_second_facter = 0.7 + (into_second_facter * 0.3);
 		sample *= into_second_facter;
 		quad wav0_site = smpl_site * 2;
 		//short sd = sample;

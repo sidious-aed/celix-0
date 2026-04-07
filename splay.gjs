@@ -39,7 +39,7 @@ let naof_params = ARGV.length;
 let acfn = "";
 let sns;
 let initt;
-let post_init_glance = function() {
+let post_init_glance = function(sns) {
 	let elapsed = Date.now() - initt;
 	if(elapsed < 0) {
 		GLib.timeout_add(GLib.PRIORITY_DEFAULT, 127, post_init_glance);
@@ -57,7 +57,9 @@ let post_init_glance = function() {
 			Gtk.main_quit();
 		}
 	}
-	GLib.timeout_add(GLib.PRIORITY_DEFAULT, 127, post_init_glance);
+	GLib.timeout_add(GLib.PRIORITY_DEFAULT, 127, function() {
+		post_init_glance(sns)
+	});
 }
 
 if(naof_params != 1) {
@@ -100,7 +102,7 @@ if(naof_params != 1) {
 		let [wpd,sns] = play_sound(acfn);
 		print("was-played | " + wpd);
 		print("sns | " + sns);
-		//post_init_glance();
+		post_init_glance(sns);
 		/*
 		await();
 		*/
