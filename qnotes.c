@@ -142,6 +142,7 @@ quadrant main(quadrant naof_params, source_vecter params) {
 	quad data_secs_site = 0;
 	//samples[0xaed] = 0.123;
 	////////////////////////////////////////
+	double amps_bar = 0x100;
 	quad samples_site = 0;
 	site = 0;
 	while(true) {
@@ -172,6 +173,7 @@ quadrant main(quadrant naof_params, source_vecter params) {
 		double next_nstep = tone + nuance_step;
 		double subtle_step = (next_nstep - tone) / (double)naof_subtlties;
 		printf("subtle-step | %lf\n", subtle_step);
+		double ampsf = tonem[3] / amps_bar;
 		//getc(stdin);
 		quad stp_site = 0;
 		while(true) {
@@ -207,6 +209,7 @@ quadrant main(quadrant naof_params, source_vecter params) {
 			//tone_mod /= tone;
 			printf("tone-mod | %lf\n", tone_mod);
 			double sampl_ampsf = org0_sign(tone_mod);
+			sampl_ampsf *= ampsf;
 			printf("sampl-ampsf | %lf\n", sampl_ampsf);
 			quad sample_site = oss + ssite;
 			printf("sample-site | %lu\n", sample_site);
