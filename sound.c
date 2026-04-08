@@ -29,9 +29,9 @@ vast wav_header(quad wav_site, source destination) {
 	add_to_entree("data", 4, header, &header_site);
 	quad dsite = stack_wav_site - 0x2c;
 	printf("dsite | %lu\n", dsite);
-	see_space("header", header, 0x2c);
+	//see_space("header", header, 0x2c);
 	add_to_entree(&dsite, 4, header, &header_site);
-	see_space("header", header, 0x2c);
+	//see_space("header", header, 0x2c);
 	wide_com(header, destination, header_site);
 	return;
 }
